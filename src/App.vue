@@ -1,32 +1,48 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <Particles/>
+    <Timer class="timer-position"/>
   </div>
 </template>
 
+<script>
+import Particles from "./components/Particles";
+import Timer from "./components/Timer";
+
+export default {
+  name: "App",
+  components: {
+    Particles,
+    Timer
+  },
+  mounted() {
+    if (window.Worker) {
+      let worker = new Worker('./registerServiceWorker')
+      worker.postMessage({
+        'cmd': 'meow', 'msg': 'hi'
+      })
+
+    }
+
+  }
+}
+
+</script>
+
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Rajdhani", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  /* padding-top: 50px; */
 }
 
-#nav {
-  padding: 30px;
+.timer-position {
+  top: 50%;
 }
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+vue-particles {
+  min-height: 10vh
 }
 </style>
