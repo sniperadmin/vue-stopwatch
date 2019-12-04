@@ -38,14 +38,20 @@ body {
 
 .timer__controls {
   display: block;
-    margin: auto;
+  margin: auto;
+  width: 100%;
 }
 
 .timer__controls input {
-  flex:1;
+  flex: 0.5;
   border:0;
-  width: 100%;
+  width: 70%;
   padding: 0.5rem;
+}
+
+.timer__controls select {
+  flex: 0.5;
+  height: 30px;
 }
 
 .timer__button, .stop {
