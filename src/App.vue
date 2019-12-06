@@ -2,6 +2,7 @@
   <div id="app">
     <Particles/>
     <Timer class="timer-position"/>
+    <notifications group="pomodro" position="bottom left" />
   </div>
 </template>
 

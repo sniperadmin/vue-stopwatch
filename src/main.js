@@ -4,13 +4,15 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import './assets/main.css'
-import * as firebase from "firebase";
+import * as firebase from "firebase"
 import Notifications from 'vue-notification'
 
 Vue.use(Notifications)
 
-import VueParticles from "vue-particles";
-Vue.use(VueParticles);
+import VueParticles from "vue-particles"
+Vue.use(VueParticles)
+
+window.Fire = new Vue()
 
 // Your web app's Firebase configuration
 var firebaseConfig = {

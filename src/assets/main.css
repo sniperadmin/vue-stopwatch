@@ -4,7 +4,7 @@ body {
   background-color: #232741;
   margin:0; 
   font-family: 'Rajdhani', sans-serif;
-  } 
+}
   
 #big-box { 
   /* position:absolute;  */
@@ -13,8 +13,12 @@ body {
   background-color: #232741;  
   background-repeat: no-repeat; 
 }
- 
-  
+
+.notify-styles {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 13pt;
+}
+
 .display__time-left {
   display: block;
   font-weight: 100;
