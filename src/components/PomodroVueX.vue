@@ -4,7 +4,7 @@
       <h3>This material is programmed by &copy; 2019 Nasr Galal</h3>
       <h3>content revised and authorized by <a :href="coretabs">Coretabs Academy</a></h3>
       <p class="thanks">
-        <strong>VueJS Stopwatch</strong>
+        <strong>VueJS Stopwatch <small style="color: rgba(0,200,0,0.7)">[Vuex mode]</small></strong>
       </p>
       <p class="thanks">
         <strong>Special thanks to</strong>
