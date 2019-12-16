@@ -1,20 +1,23 @@
 <template>
   <div id="app">
     <Particles/>
-    <Timer class="timer-position"/>
+    <!-- <Timer class="timer-position"/> -->
+    <PomodroVueX />
     <notifications group="pomodro" position="bottom left" />
   </div>
 </template>
 
 <script>
-import Particles from "./components/Particles";
-import Timer from "./components/Timer";
+import Particles from "./components/Particles"
+// import Timer from "./components/Timer"
+import PomodroVueX from "./components/PomodroVueX";
 
 export default {
   name: "App",
   components: {
     Particles,
-    Timer
+    // Timer,
+    PomodroVueX
   },
   mounted() {
     if (window.Worker) {

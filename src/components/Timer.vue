@@ -29,7 +29,7 @@
         <button @click="reset" class="stop">Stop timer</button>
         <p class="display__end-time">{{chosenValue}} ends at {{ endTime }}</p>
         <p v-if="pomodro = true">
-          
+          <!-- add sections on here -->
         </p>
       </div>
       <h3>This material is programmed by &copy; 2019 Nasr Galal</h3>
@@ -65,7 +65,7 @@ export default {
       fiveBreak2: false,
       fiveBreak3: false,
       longBreak: false,
-      pomodroHistory: []
+      // pomodroHistory: []
     }
   },
   methods: {
@@ -299,7 +299,6 @@ export default {
 
         //Displaying timer
         this.displayTimeLeft(remainedSeconds)
-
       }, 1000)
     },
     submitMins(e) {
