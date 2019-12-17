@@ -2,7 +2,7 @@
   <div id="app">
     <Particles/>
     <!-- <Timer class="timer-position"/> -->
-    <PomodroVueX />
+    <router-view></router-view>
     <notifications group="pomodro" position="bottom left" />
   </div>
 </template>
@@ -10,14 +10,12 @@
 <script>
 import Particles from "./components/Particles"
 // import Timer from "./components/Timer"
-import PomodroVueX from "./components/PomodroVueX";
 
 export default {
   name: "App",
   components: {
     Particles,
     // Timer,
-    PomodroVueX
   },
   mounted() {
     if (window.Worker) {
@@ -25,9 +23,7 @@ export default {
       worker.postMessage({
         'cmd': 'meow', 'msg': 'hi'
       })
-
     }
-
   }
 }
 

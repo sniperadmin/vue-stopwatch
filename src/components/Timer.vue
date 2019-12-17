@@ -2,6 +2,18 @@
   <div class="pack">
     <div class="timer">
       <h3>This material is programmed by &copy; 2019 Nasr Galal</h3>
+
+      <!-- go to vueX version! -->
+      <button 
+        @click="visitVuexVersion"
+        class="timer__button"
+        style="color: rgba(0,200,0,0.7)"
+      >
+        <strong>
+          Go to VueX version
+        </strong>
+      </button>
+
       <h3>content revised and authorized by <a :href="coretabs">Coretabs Academy</a></h3>
       <p class="thanks">
         <strong>VueJS Stopwatch</strong>
@@ -69,6 +81,9 @@ export default {
     }
   },
   methods: {
+    visitVuexVersion () {
+      this.$router.push('/vuex-version')
+    },
     handleOptions (event) {
       this.chosenValue = event.target.value
     },

@@ -3,6 +3,7 @@
     <div class="timer">
       <h3>This material is programmed by &copy; 2019 Nasr Galal</h3>
       <h3>content revised and authorized by <a :href="coretabs">Coretabs Academy</a></h3>
+      <button  @click="visitVuejsVersion" class="timer__button">Go to Vuejs version</button>
       <p class="thanks">
         <strong>VueJS Stopwatch <small style="color: rgba(0,200,0,0.7)">[Vuex mode]</small></strong>
       </p>
@@ -10,7 +11,7 @@
         <strong>Special thanks to</strong>
       </p>
       <p class="thanks">Mona Galal</p>
-        <button @click="runPomodro" class="timer__button">Start Pomodro Mode</button>
+        <button @click="runPomodro" class="timer__button">Start Pomodro Mode <small>(not ready)</small></button>
       <div class="timer__controls">
         <button ref="twenty" data-time="20" class="timer__button" @click="startTimer">20 Secs</button>
         <button ref="five" @click="startTimer" data-time="300" class="timer__button">Work 5</button>
@@ -46,6 +47,7 @@
     // mapActions
   } from "vuex"
   export default {
+    name: 'pomodro-vue-x',
     data() {
       return {
         enteredMins: '',
@@ -54,6 +56,9 @@
       }
     },
     methods: {
+      visitVuejsVersion () {
+        this.$router.push('/')
+      },
       handleOptions (event) {
         this.$store.commit('handleOptions', event.target.value)
       },
@@ -66,7 +71,10 @@
       startTimer (x) {
         this.reset()
         const targetSec = parseInt(x.target.dataset.time)
-        this.$store.dispatch('timer', targetSec)
+        let beeb = this.$refs.beebSound
+        this.$store.dispatch('timer', {targetSec, beeb})
+        let ref = this.$refs.startSound
+        ref.play()
       },
       submitMins () {
 

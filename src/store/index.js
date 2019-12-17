@@ -30,7 +30,7 @@ export default new Vuex.Store({
       state.chosenValue = payload
     },
     reset(state) {
-      console.log('resetting function')
+      // console.log('resetting function')
       clearInterval(state.countdown)
       responsiveVoice.cancel()
       return state.showTimer = `00:00`
@@ -44,11 +44,12 @@ export default new Vuex.Store({
     dataDefine: (state, payload) => {
       state.seconds = payload
     },
-    settingNewCountdown(state, then) {
+    settingNewCountdown(state, payload) {
+      let beeb = payload.beeb
       state.countdown = setInterval(() => {
-        const remainedSeconds = Math.round((then - Date.now()) / 1000)
+        const remainedSeconds = Math.round((payload.then - Date.now()) / 1000)
         // dispatch watcher from here!
-        this.dispatch('counterWatcher', remainedSeconds)
+        this.dispatch('counterWatcher', { remainedSeconds, beeb })
       }, 1000)
     },
     displayTimeLeft(state, seconds) {
@@ -83,40 +84,47 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    timer: ({commit}, seconds) => {
-      commit('displayTimeLeft', seconds)
-      commit('dataDefine', seconds)
-       //constants
-       const now = Date.now()
-       const then = now + seconds * 1000
-      //  this.displayTimeLeft(seconds)
-      //  this.displayEndTime(then)
-      commit('settingNewCountdown', then)
+    timer: ({commit}, payload) => {
+      // testing payload object
+      // console.log(payload.targetSec)
+      // console.log(payload.beeb)
+
+      commit('displayTimeLeft', payload.targetSec)
+      commit('dataDefine', payload.targetSec)
+
+      //constants
+      const now = Date.now()
+      const then = now + payload.targetSec * 1000
+
+      // starting countdown
+      let beeb = payload.beeb
+      commit('settingNewCountdown', { then, beeb })
+      
+      // displaying counter animation
       commit('displayEndTime', then)
-      //setting animation in one second and storing it in a variable (countdown)
-      //to be able to clearInterval after it reaches zero
     },
-    counterWatcher: ({commit}, remainedSeconds) => {
+    counterWatcher: ({commit}, payload) => {
       //Checking when to stop the function
-      if (remainedSeconds < 0) {
+      if (payload.remainedSeconds < 0) {
         commit('clearInt')
         return
       }
      
       //installing beeb sound
-      if (remainedSeconds < 11) {
-        for (let sec in remainedSeconds) {
+      if (payload.remainedSeconds < 11) {
+        for (let sec in payload.remainedSeconds) {
           responsiveVoice.speak(`${sec}`)
         }
-        // this.$refs.beebSound.play()
+        payload.beeb.play()
       }
+
       // changing colors once reaching 10 seconds (needs fixing!)
-      if (remainedSeconds <= 11) {
+      if (payload.remainedSeconds <= 11) {
         // not programmed yet
       }
-      console.log(remainedSeconds)
+
       // Displaying timer
-      commit('displayTimeLeft', remainedSeconds)
+      commit('displayTimeLeft', payload.remainedSeconds)
     }
   },
   getters: {
