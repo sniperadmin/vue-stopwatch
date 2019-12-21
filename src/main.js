@@ -29,41 +29,6 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 // firebase.analytics()
 
-// const messaging = firebase.messaging();
-
-// 1. Generate a new key pair
-
-// messaging.usePublicVapidKey('BLKHaI2WcEyLWR8HdCjXZVssNyiP26sHzhp7L-CLdw35tCnLZLd-8sRTBotzWdsBRQNPDYzqHXUo5P1ezySA9AA'); 
-
-// Request Permission of Notifications
-
-// messaging.requestPermission().then(() => {
-  // console.log('Notification permission granted.')
-  // Vue.notify({
-  //   group: 'foo',
-  //   title: 'Notification permission granted',
-  //   text: 'Hello user! Thanks for confirming!'
-  // })
-  
-  // Get Token
-  
-  // messaging.getToken().then((token) => {
-  
-  // console.log(token)
-//     Vue.notify({
-//       group: 'foo',
-//       title: 'Token provided',
-//       text: `${token}`
-//     })
-//   })
-// }).catch((err) => {
-// console.log('Unable to get permission to notify.', err)
-//   Vue.notify({
-//     group: 'foo',
-//     title: 'something wrong',
-//     text: `Error => ${err}`
-//   })
-// })
 
 Vue.config.productionTip = false
 

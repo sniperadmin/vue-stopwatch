@@ -1,8 +1,11 @@
 <template>
   <div class="pack">
     <div class="timer">
+      <PushNotification />
+      
       <h3>This material is programmed by &copy; 2019 Nasr Galal</h3>
       <h3>content revised and authorized by <a :href="coretabs">Coretabs Academy</a></h3>
+
       <button  @click="visitVuejsVersion" class="timer__button">Go to Vuejs version</button>
       <p class="thanks">
         <strong>VueJS Stopwatch <small style="color: rgba(0,200,0,0.7)">[Vuex mode]</small></strong>
@@ -46,8 +49,15 @@
     mapMutations,
     // mapActions
   } from "vuex"
+
+  import PushNotification from "@/components/PushNotification"
+
+
   export default {
     name: 'pomodro-vue-x',
+    components: {
+      PushNotification,
+    },
     data() {
       return {
         enteredMins: '',

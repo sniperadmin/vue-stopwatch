@@ -1,8 +1,10 @@
 <template>
   <div class="pack">
     <div class="timer">
+      <PushNotification />
+      
       <h3>This material is programmed by &copy; 2019 Nasr Galal</h3>
-
+            
       <!-- go to vueX version! -->
       <button 
         @click="visitVuexVersion"
@@ -52,12 +54,17 @@
 </template>
 
 <script>
-// Setting Variables
-let countdown; // storing setInterval in this function to be able to stop it at zero.
-const { responsiveVoice } = window;
+  import PushNotification from "@/components/PushNotification"
+
+  // Setting Variables
+  let countdown; // storing setInterval in this function to be able to stop it at zero.
+  const { responsiveVoice } = window;
 
 export default {
   name: "Timer",
+  components: {
+    PushNotification,
+  },
   data() {
     return {
       showTimer: `00:00`,
